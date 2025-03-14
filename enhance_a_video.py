@@ -95,8 +95,8 @@ class VEnhancer:
             )
 
         output = tensor2vid(output)
-        save_video(output, self.result_dir, f"{save_name}.mp4", fps=target_fps)
-        return os.path.join(self.result_dir, save_name)
+        save_video(output, self.result_dir, f"{save_name}_enhanced.mp4", fps=target_fps)
+        return os.path.join(self.result_dir, f"{save_name}_enhanced.mp4")
 
     def download_model(self, version="v1"):
         REPO_ID = "jwhejwhe/VEnhancer"

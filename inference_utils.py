@@ -105,7 +105,7 @@ def save_video(video, save_dir, file_name, fps=16.0, drop_prefix_cnt=0):
         tpth = os.path.join(temp_dir, "%06d.png" % (fid + 1))
         cv2.imwrite(tpth, frame[:, :, ::-1])
     tmp_path = os.path.join(save_dir, "tmp.mp4")
-    cmd = f"ffmpeg -y -f image2 -framerate {fps} -i {temp_dir}/%06d.png \
+    cmd = f"/usr/bin/ffmpeg -y -f image2 -framerate {fps} -i {temp_dir}/%06d.png \
      -vcodec libx264 -crf 17 -pix_fmt yuv420p {tmp_path}"
     status, output = subprocess.getstatusoutput(cmd)
     if status != 0:
