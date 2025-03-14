@@ -182,13 +182,16 @@ def main():
     prompt_list = None
     if os.path.isfile(prompt_path):
         prompt_list = load_prompt_list(prompt_path)
-        print(prompt_list)
-        # assert len(prompt_list) == len(file_path_list)
-
-    print(file_path_list)
+        if len(prompt_list) != len(file_path_list):
+            if len(prompt_list) == 1:
+                prompt_list = prompt_list * len(file_path_list)
+            else:
+                raise ValueError("prompt_list length must be equal to file_path_list length!")
+    else:
+        prompt_list = [prompt_path] * len(file_path_list)
 
     for ind, file_path in enumerate(file_path_list):
-        prompt = prompt_list[0]
+        prompt = prompt_list[ind]
         logger.info(f"processing video {ind}, file_path: {file_path}")
         # if filename_as_prompt:
         #     prompt = os.path.splitext(os.path.basename(file_path))[0]
