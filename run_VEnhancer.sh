@@ -37,7 +37,7 @@ for video_path in ${selected_paths[@]}; do
     --input_path ${video_path} \
     --prompt_path input_videos/prompts.txt \
     --save_dir ${output_root}_${frame_rate} \
-    # --blended_decoding \
-    # --rotation_decoding 
+    --blended_decoding \
+    --rotation_decoding 
     
 done
